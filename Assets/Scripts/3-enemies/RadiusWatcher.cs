@@ -4,7 +4,7 @@
  * This component makes its object watch a given radius, and if the target is found - it starts chasing it.
  */
 [RequireComponent(typeof(Chaser))]
-public class RadiusWatcher: MonoBehaviour
+public class RadiusWatcher : MonoBehaviour
 {
     [SerializeField] float radiusToWatch = 5f;
     private Chaser chaser;
@@ -21,7 +21,8 @@ public class RadiusWatcher: MonoBehaviour
         if (distanceToTarget <= radiusToWatch)
         {
             chaser.enabled = true;
-        } else
+        }
+        else
         {
             chaser.enabled = false;
         }

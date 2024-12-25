@@ -5,7 +5,7 @@
  */
 [RequireComponent(typeof(Patroller))]
 [RequireComponent(typeof(Chaser))]
-public class EnemyController: MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] float radiusToWatch = 5f;
     private Chaser chaser;
@@ -25,7 +25,7 @@ public class EnemyController: MonoBehaviour
         {
             chaser.enabled = true;
             patroller.enabled = false;
-        } 
+        }
         else
         {
             patroller.enabled = true;
@@ -39,4 +39,3 @@ public class EnemyController: MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radiusToWatch);
     }
 }
- 

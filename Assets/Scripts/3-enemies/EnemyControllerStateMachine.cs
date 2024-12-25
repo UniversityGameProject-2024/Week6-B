@@ -6,7 +6,7 @@
 [RequireComponent(typeof(Patroller))]
 [RequireComponent(typeof(Chaser))]
 [RequireComponent(typeof(Rotator))]
-public class EnemyControllerStateMachine: StateMachine
+public class EnemyControllerStateMachine : StateMachine
 {
     [SerializeField] float radiusToWatch = 5f;
     [SerializeField] float probabilityToRotate = 0.2f;
@@ -28,11 +28,11 @@ public class EnemyControllerStateMachine: StateMachine
         .AddState(patroller)     // This would be the first active state.
         .AddState(chaser)
         .AddState(rotator)
-        .AddTransition(patroller, () => DistanceToTarget()<=radiusToWatch,   chaser)
-        .AddTransition(rotator,   () => DistanceToTarget()<=radiusToWatch,   chaser)
-        .AddTransition(chaser,    () => DistanceToTarget() > radiusToWatch,  patroller)
-        .AddTransition(rotator,   () => Random.Range(0f, 1f) < probabilityToStopRotating * Time.deltaTime, patroller)
-        .AddTransition(patroller, () => Random.Range(0f, 1f) < probabilityToRotate       * Time.deltaTime, rotator)
+        .AddTransition(patroller, () => DistanceToTarget()<=radiusToWatch, chaser)
+        .AddTransition(rotator, () => DistanceToTarget()<=radiusToWatch, chaser)
+        .AddTransition(chaser, () => DistanceToTarget() > radiusToWatch, patroller)
+        .AddTransition(rotator, () => Random.Range(0f, 1f) < probabilityToStopRotating * Time.deltaTime, patroller)
+        .AddTransition(patroller, () => Random.Range(0f, 1f) < probabilityToRotate * Time.deltaTime, rotator)
         ;
     }
     private void OnDrawGizmosSelected()
@@ -41,4 +41,3 @@ public class EnemyControllerStateMachine: StateMachine
         Gizmos.DrawWireSphere(transform.position, radiusToWatch);
     }
 }
- 

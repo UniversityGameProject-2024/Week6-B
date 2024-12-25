@@ -3,7 +3,7 @@
 /**
  * This component chases a given target object.
  */
-public class Chaser: TargetMover
+public class Chaser : TargetMover
 {
     [Tooltip("The object that we try to chase")]
     [SerializeField] Transform targetObject = null;

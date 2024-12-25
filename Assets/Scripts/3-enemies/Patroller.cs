@@ -3,7 +3,7 @@
 /**
  * This component patrols between given points.
  */
-public class Patroller: TargetMover
+public class Patroller : TargetMover
 {
     [SerializeField] Cycle patrolPath = null;
 
@@ -25,4 +25,3 @@ public class Patroller: TargetMover
         SetTarget(patrolPath.transform.GetChild(currentPointIndex).position);
     }
 }
- 

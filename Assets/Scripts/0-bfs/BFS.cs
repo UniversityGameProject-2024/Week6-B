@@ -46,9 +46,9 @@ public class BFS
         return path;
     }
     public static void FindPath<NodeType>(
-            IGraph<NodeType> graph, 
-            NodeType startNode, NodeType endNode, 
-            List<NodeType> outputPath, int maxiterations=1000)
+            IGraph<NodeType> graph,
+            NodeType startNode, NodeType endNode,
+            List<NodeType> outputPath, int maxiterations = 1000)
     {
         Queue<NodeType> openQueue = new Queue<NodeType>();
         HashSet<NodeType> openSet = new HashSet<NodeType>();
@@ -60,11 +60,12 @@ public class BFS
             if (openQueue.Count == 0)
             {
                 break;
-            } else
+            }
+            else
             {
                 NodeType searchFocus = openQueue.Dequeue();
-
-                if (searchFocus.Equals(endNode)) {
+                if (searchFocus.Equals(endNode))
+                {
                     // We found the target -- now construct the path:
                     outputPath.Add(endNode);
                     while (previous.ContainsKey(searchFocus))
@@ -74,12 +75,14 @@ public class BFS
                     }
                     outputPath.Reverse();
                     break;
-                } else
+                }
+                else
                 {
                     // We did not found the target yet -- develop new nodes.
-                    foreach (var neighbor in graph.Neighbors(searchFocus))
+                    foreach(var neighbor in graph.Neighbors(searchFocus))
                     {
-                        if (openSet.Contains(neighbor)) {
+                        if (openSet.Contains(neighbor))
+                        {
                             continue;
                         }
                         openQueue.Enqueue(neighbor);
