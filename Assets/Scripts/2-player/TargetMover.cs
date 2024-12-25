@@ -49,8 +49,7 @@ public class TargetMover : MonoBehaviour
     }
     IEnumerator MoveTowardsTheTarget()
     {
-        for (; ;)
-        {
+        for (; ;){
             yield return new WaitForSeconds(timeBetweenSteps);
             if (enabled && !atTarget)
                 MakeOneStepTowardsTheTarget();
