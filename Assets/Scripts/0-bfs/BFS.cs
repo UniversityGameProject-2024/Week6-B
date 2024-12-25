@@ -7,8 +7,8 @@ using UnityEngine;
  * @author Erel Segal-Halevi
  * @since 2020-02
  */
-public class BFS {
-
+public class BFS
+{
     public static List<Vector3Int> GetReachableTiles(TilemapGraph tilemapGraph, Vector3Int startPosition, int maxIterations = 1000)
     {
         List<Vector3Int> reachableTiles = new List<Vector3Int>();
@@ -36,10 +36,8 @@ public class BFS {
                 }
             }
         }
-
         return reachableTiles;
     }
-
     // This is the existing GetPath method in the BFS class
     public static List<NodeType> GetPath<NodeType>(IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations = 1000)
     {
@@ -47,9 +45,6 @@ public class BFS {
         FindPath(graph, startNode, endNode, path, maxiterations);
         return path;
     }
-
-
-
     public static void FindPath<NodeType>(
             IGraph<NodeType> graph, 
             NodeType startNode, NodeType endNode, 
@@ -60,24 +55,30 @@ public class BFS {
         Dictionary<NodeType, NodeType> previous = new Dictionary<NodeType, NodeType>();
         openQueue.Enqueue(startNode);
         openSet.Add(startNode);
-        int i; for (i = 0; i < maxiterations; ++i) { // After maxiterations, stop and return an empty path
-            if (openQueue.Count == 0) {
+        int i; for (i = 0; i < maxiterations; ++i)
+        { // After maxiterations, stop and return an empty path
+            if (openQueue.Count == 0)
+            {
                 break;
-            } else {
+            } else
+            {
                 NodeType searchFocus = openQueue.Dequeue();
 
                 if (searchFocus.Equals(endNode)) {
                     // We found the target -- now construct the path:
                     outputPath.Add(endNode);
-                    while (previous.ContainsKey(searchFocus)) {
+                    while (previous.ContainsKey(searchFocus))
+                    {
                         searchFocus = previous[searchFocus];
                         outputPath.Add(searchFocus);
                     }
                     outputPath.Reverse();
                     break;
-                } else {
+                } else
+                {
                     // We did not found the target yet -- develop new nodes.
-                    foreach (var neighbor in graph.Neighbors(searchFocus)) {
+                    foreach (var neighbor in graph.Neighbors(searchFocus))
+                    {
                         if (openSet.Contains(neighbor)) {
                             continue;
                         }
@@ -89,11 +90,10 @@ public class BFS {
             }
         }
     }
-
-    public static List<NodeType> GetPath<NodeType>(TilemapGraph tilemapGraph, IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000) {
+    public static List<NodeType> GetPath<NodeType>(TilemapGraph tilemapGraph, IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000)
+    {
         List<NodeType> path = new List<NodeType>();
         FindPath(graph, startNode, endNode, path, maxiterations);
         return path;
     }
-
 }
