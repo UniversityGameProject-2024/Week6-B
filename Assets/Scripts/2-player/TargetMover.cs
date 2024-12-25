@@ -49,7 +49,7 @@ public class TargetMover : MonoBehaviour
     }
     IEnumerator MoveTowardsTheTarget()
     {
-        for(;;)
+        for( ; ; )
         {
             yield return new WaitForSeconds(timeBetweenSteps);
             if (enabled && !atTarget)
@@ -61,8 +61,10 @@ public class TargetMover : MonoBehaviour
         Vector3Int startNode = tilemap.WorldToCell(transform.position);
         Vector3Int endNode = targetInGrid;
         List<Vector3Int> shortestPath = BFS.GetPath(tilemapGraph, startNode, endNode, maxIterations);
-        Debug.Log("shortestPath = " + string.Join(" , ",shortestPath));
-        if (shortestPath.Count >= 2) { // shortestPath contains both source and target.
+        Debug.Log("shortestPath = " + string.Join(" , ", shortestPath));
+        if (shortestPath.Count >= 2)
+        {
+            //shortestPath contains both source and target.
             Vector3Int nextNode = shortestPath[1];
             transform.position = tilemap.GetCellCenterWorld(nextNode);
         }

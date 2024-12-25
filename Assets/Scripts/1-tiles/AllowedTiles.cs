@@ -9,7 +9,8 @@ using UnityEngine.Tilemaps;
 public class AllowedTiles : MonoBehaviour
 {
     [SerializeField] TileBase[] allowedTiles = null;
-    public bool Contains(TileBase tile) {
+    public bool Contains(TileBase tile)
+    {
         return allowedTiles.Contains(tile);
     }
 

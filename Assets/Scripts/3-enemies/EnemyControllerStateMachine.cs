@@ -28,8 +28,8 @@ public class EnemyControllerStateMachine : StateMachine
         .AddState(patroller)     // This would be the first active state.
         .AddState(chaser)
         .AddState(rotator)
-        .AddTransition(patroller, () => DistanceToTarget()<=radiusToWatch, chaser)
-        .AddTransition(rotator, () => DistanceToTarget()<=radiusToWatch, chaser)
+        .AddTransition(patroller, () => DistanceToTarget() <= radiusToWatch, chaser)
+        .AddTransition(rotator, () => DistanceToTarget() <= radiusToWatch, chaser)
         .AddTransition(chaser, () => DistanceToTarget() > radiusToWatch, patroller)
         .AddTransition(rotator, () => Random.Range(0f, 1f) < probabilityToStopRotating * Time.deltaTime, patroller)
         .AddTransition(patroller, () => Random.Range(0f, 1f) < probabilityToRotate * Time.deltaTime, rotator)

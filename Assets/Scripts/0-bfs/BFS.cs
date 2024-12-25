@@ -93,7 +93,7 @@ public class BFS
             }
         }
     }
-    public static List<NodeType> GetPath<NodeType>(TilemapGraph tilemapGraph, IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations=1000)
+    public static List<NodeType> GetPath<NodeType>(TilemapGraph tilemapGraph, IGraph<NodeType> graph, NodeType startNode, NodeType endNode, int maxiterations = 1000)
     {
         List<NodeType> path = new List<NodeType>();
         FindPath(graph, startNode, endNode, path, maxiterations);

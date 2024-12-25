@@ -29,7 +29,7 @@ public class CaveGenerator
 
 
     private Random random;
-    public CaveGenerator(float randomFillPercent=0.5f, int gridSize=100)
+    public CaveGenerator(float randomFillPercent = 0.5f, int gridSize = 100)
     {
         this.randomFillPercent = randomFillPercent;
         this.gridSize = gridSize;
@@ -58,7 +58,9 @@ public class CaveGenerator
                 {
                     //We dont want holes in our walls, so the border is always a wall
                     bufferOld[x, y] = 1;
-                } else {
+                }
+                else
+                {
                     //Random walls and caves
                     bufferOld[x, y] = random.NextDouble() < randomFillPercent ? 1 : 0;
                 }
@@ -83,12 +85,12 @@ public class CaveGenerator
                 }
                 //Uses bufferOld to get the wall count
                 int surroundingWalls = GetSurroundingWallCount(x, y);
-
                 //Use some smoothing rules to generate caves
-                if (surroundingWalls > 4)
+                if(surroundingWalls > 4)
                 {
                     bufferNew[x, y] = 1;
-                } else if (surroundingWalls == 4)
+                }
+                else if (surroundingWalls == 4)
                 {
                     bufferNew[x, y] = bufferOld[x, y];
                 } else {
@@ -103,12 +105,13 @@ public class CaveGenerator
     private int GetSurroundingWallCount(int cellX, int cellY)
     {
         int wallCounter = 0;
-        for (int neighborX = cellX - 1; neighborX <= cellX + 1; neighborX ++)
+        for (int neighborX = cellX - 1; neighborX <= cellX + 1; neighborX++)
         {
             for (int neighborY = cellY - 1; neighborY <= cellY + 1; neighborY++)
             {
                 //We dont need to care about being outside of the grid because we are never looking at the border
-                if (neighborX == cellX && neighborY == cellY) { //This is the cell itself and no neighbor!
+                if (neighborX == cellX && neighborY == cellY)
+                { //This is the cell itself and no neighbor!
                     continue;
                 }
                 //This neighbor is a wall

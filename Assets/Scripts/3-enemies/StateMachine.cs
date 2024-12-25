@@ -14,7 +14,7 @@ using Transition = System.Tuple<UnityEngine.MonoBehaviour, System.Func<bool>, Un
  */
 public class StateMachine : MonoBehaviour
 {
-    private List<State>     states      = new List<State>();
+    private List<State> states = new List<State>();
     private List<Transition> transitions = new List<Transition>();
 
     private State activeState = null;
@@ -22,12 +22,11 @@ public class StateMachine : MonoBehaviour
     public void GoToState(State newActiveState)
     {
         if (activeState == newActiveState) return;
-        if (activeState!=null)activeState.enabled = false;
+        if (activeState != null) activeState.enabled = false;
         activeState = newActiveState;
         activeState.enabled = true;
         Debug.Log("Going to state " + activeState);
     }
-
     public StateMachine AddState(State newState)
     {
         states.Add(newState);
@@ -50,9 +49,9 @@ public class StateMachine : MonoBehaviour
     {
         foreach (Transition transition in transitions)
         {
-            if(transition.Item1==activeState)
+            if(transition.Item1 == activeState)
             {
-                if(transition.Item2()==true)
+                if(transition.Item2() == true)
                 {
                     GoToState(transition.Item3);
                     break;

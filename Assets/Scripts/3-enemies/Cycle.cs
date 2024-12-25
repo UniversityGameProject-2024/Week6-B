@@ -14,7 +14,7 @@ public class Cycle : MonoBehaviour
         for (int i = 0; i < transform.childCount; ++i)
         {
             Gizmos.DrawSphere(transform.GetChild(i).position, gizmoRadius);
-            Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild((i +1 ) % transform.childCount).position);
+            Gizmos.DrawLine(transform.GetChild(i).position, transform.GetChild((i + 1) % transform.childCount).position);
         }
     }
 }

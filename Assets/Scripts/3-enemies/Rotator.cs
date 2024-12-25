@@ -8,7 +8,7 @@ public class Rotator : MonoBehaviour
 {
     [SerializeField] float minAngle = -90;
     [SerializeField] float maxAngle = 90;
-    [SerializeField] Vector3 angularVelocity = new Vector3(30,0,0);
+    [SerializeField] Vector3 angularVelocity = new Vector3(30, 0, 0);
     private int direction = 1;
     private float angle = 0;
     void Update()

@@ -66,7 +66,7 @@ public class TilemapCaveGenerator : MonoBehaviour
             for (int x = 0; x < gridSize; x++)
             {
                 var position = new Vector3Int(x, y, 0);
-                var tile = data[x, y] == 1 ? wallTile: floorTile;
+                var tile = data[x, y] == 1 ? wallTile : floorTile;
                 tilemap.SetTile(position, tile);
             }
         }
