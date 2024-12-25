@@ -34,7 +34,7 @@ public class StateMachine : MonoBehaviour
     }
     public StateMachine AddTransition(State fromState, Func<bool> condition, State toState)
     {
-        transitions.Add(new Transition(fromState,condition,toState));
+        transitions.Add(new Transition(fromState, condition, toState));
         return this;
     }
     private void Start()
@@ -49,9 +49,9 @@ public class StateMachine : MonoBehaviour
     {
         foreach (Transition transition in transitions)
         {
-            if(transition.Item1 == activeState)
+            if (transition.Item1 == activeState)
             {
-                if(transition.Item2() == true)
+                if (transition.Item2() == true)
                 {
                     GoToState(transition.Item3);
                     break;
@@ -60,4 +60,3 @@ public class StateMachine : MonoBehaviour
         }
     }
 }
- 

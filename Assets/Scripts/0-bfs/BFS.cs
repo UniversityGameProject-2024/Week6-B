@@ -78,7 +78,7 @@ public class BFS
                 }
                 else
                 {
-                    // We did not found the target yet -- develop new nodes.
+                    //We did not found the target yet -- develop new nodes
                     foreach(var neighbor in graph.Neighbors(searchFocus))
                     {
                         if (openSet.Contains(neighbor))

@@ -86,14 +86,16 @@ public class CaveGenerator
                 //Uses bufferOld to get the wall count
                 int surroundingWalls = GetSurroundingWallCount(x, y);
                 //Use some smoothing rules to generate caves
-                if(surroundingWalls > 4)
+                if (surroundingWalls > 4)
                 {
                     bufferNew[x, y] = 1;
                 }
                 else if (surroundingWalls == 4)
                 {
                     bufferNew[x, y] = bufferOld[x, y];
-                } else {
+                }
+                else
+                {
                     bufferNew[x, y] = 0;
                 }
             }
